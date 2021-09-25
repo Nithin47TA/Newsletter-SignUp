@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express=require("express");
 const bodyparser=require("body-parser");
 const request=require("request");
@@ -29,10 +30,10 @@ const data={
   ]
 };
 const jsonData=JSON.stringify(data);
-const url="https://us1.api.mailchimp.com/3.0/lists/20322077bd";
+const url="https://us1.api.mailchimp.com/3.0/lists/"+LIST_ID;
 const options={
   method:"POST",
-  auth:"NithinTA:0230d71f095edfcbd8bc7083d30d1178-us1"
+  auth:"NithinTA:"+API_KEY
 }
 const request=https.request(url,options,function(response){
 
@@ -63,7 +64,4 @@ app.get("/",function(req,res){
 app.listen(process.env.PORT||"3000",function(){
   console.log("server is running on port 3000");
 })
-
-// api key:0230d71f095edfcbd8bc7083d30d1178-us1
-//list id :20322077bd
 //heroku site:https://damp-brook-86796.herokuapp.com/
